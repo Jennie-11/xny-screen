@@ -1,0 +1,61 @@
+html,
+body,
+#app,
+.trio-page {
+  height: 100%;
+  width: 100%;
+  background-color: $page-background;
+}
+.trio-page {
+  overflow: hidden;
+}
+.mixin-layout {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.trio-layout {
+  flex: 1;
+}
+.page-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding:0 24px ;
+}
+.blue-btn {
+  background-color: #00deff;
+  color: #000;
+  &:hover {
+    transition:  background-color 0.3s;
+    border: 1px solid #2aeaff;
+    background-color: #2aeaff;
+  }
+}
+.ff7Active {
+  .bg-at {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 116, 0, 0.3) 0%,
+      rgba(255, 116, 0, 0.09) 100%
+    ) !important;
+  }
+  .ft-at {
+    color: #ff7400 !important;
+  }
+}
+.ff0Active {
+  .ft-at {
+    color: #ff0000;
+  }
+  .bg-at {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 56, 61, 0.3) 0%,
+      rgba(255, 56, 61, 0.09) 100%
+    ) !important;
+  }
+}

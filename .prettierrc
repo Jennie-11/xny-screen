@@ -1,0 +1,4 @@
+{
+  "endOfLine": "auto",
+  "ignorePath": "./src/request/index.js"
+}

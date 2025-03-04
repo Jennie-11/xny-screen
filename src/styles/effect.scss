@@ -1,0 +1,185 @@
+// 定义函数
+@function rgbaColor($color, $alpha) {
+  @return rgba($color, $alpha);
+}
+
+// 图标
+@for $i from 8 through 60 {
+  .ic-#{$i} {
+    height: #{$i}#{$Tr-unit};
+    width: #{$i}#{$Tr-unit};
+    object-fit: contain;
+  }
+}
+
+@for $i from 1 through 10 {
+  $alpha: $i / 10;
+  .cr-wt-#{$i} {
+    color: rgbaColor($white-color, $alpha);
+  }
+}
+
+@for $i from 1 through 10 {
+  $alpha: $i / 10;
+  .cr-bk-#{$i} {
+    color: rgbaColor($black-color, $alpha);
+  }
+}
+
+$fontColors: (
+  3ba: #030b1a,
+  bf0: #00bf60,
+  ff0: #FF0000,
+  eff: #00deff,
+  ff7: #FF7400,
+
+);
+
+.cr {
+  @each $key, $value in $fontColors {
+    &-#{$key} {
+      color: $value;
+    }
+  }
+}
+
+$backgroundColors: (
+  17a: #1a7efa,
+  fff: #ffffff,
+  e2a: #eef2fa,
+  1f1: #000000,
+  b3e: #bee3fe,
+  ffc: #f5f7fc,
+  eff: #00deff,
+  66D: #66d9ff,
+);
+
+@function bg-ps($x, $y) {
+  @return $x + $Tr-unit, $y + $Tr-unit;
+}
+@function bg-lg($x, $y, $z) {
+  @return linear-gradient(90deg, rgba($x, $y, $z) 0%, rgba($x, $y, $z) 100%);
+}
+
+.bg {
+  &-mb {
+    background-color: $menu-background;
+  }
+  &-pb {
+    background-color: $page-background;
+  }
+
+  @each $key, $value in $backgroundColors {
+    &-#{$key} {
+      background-color: $value;
+    }
+  }
+}
+
+.ts {
+  &-al {
+    transition: all 0.3s;
+  }
+}
+
+.op {
+  @for $i from 10 through 100 {
+    &-#{$i} {
+      opacity: #{$i / 100};
+    }
+  }
+}
+
+$borderColors: (
+  77f: #787bdf,
+  49b: #439cfb,
+  fff: #ffffff,
+  17a: #1a7efa,
+  dd5: #dcdfe5,
+  eff: #00deff,
+  40A: rgba(64, 163, 255, 0.4),
+);
+
+.bd {
+  @each $key, $value in $borderColors {
+    @for $i from 1 through 50 {
+      &-#{$key}-#{$i} {
+        border: #{$i}#{$Tr-unit} solid $value;
+      }
+    }
+    &-#{$key}-bt {
+      border-bottom: 1 +#{$Tr-unit} solid $value;
+    }
+    &-#{$key}-tp {
+      border-top: 1 +#{$Tr-unit} solid $value;
+    }
+    &-#{$key}-lf {
+      border-left: 1 +#{$Tr-unit} solid $value;
+    }
+    &-#{$key}-rt {
+      border-right: 1 +#{$Tr-unit} solid $value;
+    }
+  }
+
+  @for $i from 1 through 50 {
+    &-rd-#{$i} {
+      border-radius: #{$i}#{$Tr-unit};
+    }
+  }
+}
+
+.cs {
+  &-pt {
+    cursor: pointer;
+  }
+  &-df {
+    cursor: default;
+  }
+}
+.of {
+  &-at {
+    overflow: auto;
+  }
+  &-hd {
+    overflow: hidden;
+  }
+  &-y-sr {
+    overflow-y: auto;
+  }
+  &-y-hd {
+    overflow-y: hidden;
+  }
+  &-x-sr {
+    overflow-x: auto;
+  }
+  &-x-hd {
+    overflow-x: hidden;
+  }
+  &-np {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.hv {
+  &-x-sr:hover {
+    overflow-x: auto;
+  }
+  &-y-sr:hover {
+    overflow-y: auto;
+  }
+}
+
+// 字体类型
+.ff {
+  &-tx {
+    font-family: "TenXun";
+  }
+  &-pz {
+    font-family: "PanMen";
+  }
+  &-ysb {
+    font-family: "YSBiaoTiHei";
+  }
+}
