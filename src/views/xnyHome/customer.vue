@@ -20,8 +20,13 @@
 import Header from "@/components/header/Header.vue";
 import FhcLine1 from "./view/fhcLine1.vue";
 import Benchmarkline from "./view/BenchmarkLines.vue";
-import { getMachineVo } from "@/api/xnyHome/xnyHome.js";
-import { getlineList } from "@/api/xnyHome/xnyHome.js";
+import {
+  getMachineVo,
+  getlineList,
+  getCustomerMachineVo,
+  getlineListCustomer,
+} from "@/api/xnyHome/xnyHome.js";
+
 export default {
   name: "HomePage",
   components: {
@@ -55,28 +60,37 @@ export default {
   methods: {
     changeOption(value) {
       this.lineId = value;
-      this.$router.push(`/xnyHome${value}`);
+      this.$router.push(`/xnyHomecustomer${value}`);
       this.getMachineVo(value);
     },
     async getMachineVo(lineId) {
       if (!lineId) {
         lineId = this.lineId;
       }
-      let data = await getMachineVo(lineId);
+      let data;
+      if (lineId == 5) {
+        data = await getCustomerMachineVo(lineId);
+      } else {
+        data = await getMachineVo(lineId);
+      }
       this.dataList = data.data.data;
     },
     async getlineList() {
       let keyList = ["screenOptionLineCode"];
-      let { data } = await getlineList({ keyList });
+      let data;
+      if (this.lineId == 5) {
+        data = await getlineListCustomer({ keyList });
+      } else {
+        data = await getlineList({ keyList });
+      }
 
-      if (data.data.length == 0) return;
-      this.lineOption = data.data.find(
+      if (data.data.data.length == 0) return;
+      this.lineOption = data.data.data.find(
         (item) => item.key == "screenOptionLineCode"
       ).list;
     },
   },
   created() {
-    // console.log(this.$route);
     this.lineId = this.$route.params.lineId * 1;
   },
   mounted() {

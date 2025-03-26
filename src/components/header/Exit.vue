@@ -140,7 +140,7 @@ export default {
   z-index: 2;
 }
 .exitfullbutton {
-  background: url(~@/assets/icons/fullex.png) no-repeat;
+  background: url(~@/assets/icons/full.png) no-repeat;
   background-size: contain;
 }
 </style>

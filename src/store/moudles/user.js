@@ -69,7 +69,7 @@ const user = {
         )
           .then((res) => {
             const data = res.data;
-            console.log(data, "lllllllllllllll");
+            // console.log(data, "lllllllllllllll");
             commit("SET_TOKEN", data.access_token);
             commit("SET_REFRESH_TOKEN", data.refresh_token);
             commit("SET_USER_INFO", data);

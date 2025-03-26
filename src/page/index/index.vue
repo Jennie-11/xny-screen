@@ -3,8 +3,8 @@
     <!-- 默认布局 -->
     <div class="mixin-layout">
       <!-- 顶部菜单 -->
-      <Header isNeedOption isNeedExit />
-      <div class="trio-layout pd-tp-24">
+
+      <div class="trio-layout">
         <keep-alive>
           <router-view v-if="$route.meta.keepAlive" />
         </keep-alive>
@@ -14,11 +14,9 @@
   </div>
 </template>
 <script>
-import Header from "@/components/header/Header.vue";
+// import Header from "@/components/header/Header.vue";
 export default {
   name: "PageIndex",
-  components: {
-    Header,
-  },
+  components: {},
 };
 </script>

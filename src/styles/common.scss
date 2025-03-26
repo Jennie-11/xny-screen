@@ -5,6 +5,10 @@ body,
   height: 100%;
   width: 100%;
   background-color: $page-background;
+
+}
+*{
+  box-sizing: border-box;
 }
 .trio-page {
   overflow: hidden;
@@ -24,13 +28,13 @@ body,
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding:0 24px ;
+  padding: 0 24px;
 }
 .blue-btn {
   background-color: #00deff;
   color: #000;
   &:hover {
-    transition:  background-color 0.3s;
+    transition: background-color 0.3s;
     border: 1px solid #2aeaff;
     background-color: #2aeaff;
   }
@@ -46,6 +50,9 @@ body,
   .ft-at {
     color: #ff7400 !important;
   }
+}
+.gs100 {
+  filter: grayscale(100%);
 }
 .ff0Active {
   .ft-at {

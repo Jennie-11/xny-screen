@@ -92,7 +92,12 @@ axios.interceptors.response.use(
     const statusWhiteList = website.statusWhiteList || [];
     const message = res.data.msg || res.data.error_description || "服务器异常";
     if (statusWhiteList.includes(status)) return Promise.reject(res);
- if (status == 401) {
+    if (status == 401) {
+      if (!store.state.token) {
+        store.dispatch("FedLogOut").then(() => 
+         router.push({ path: "/login" }));
+        return
+       }
       if (!isRefreshRequest(res.config.params)) {
         const cpFlag = await refreshToken();
         console.log(cpFlag,'cpFlagcpFlag')
@@ -102,9 +107,9 @@ axios.interceptors.response.use(
           const resp = await axios.request(res.config);
           return resp;
         }
+        return
       }
-      store.dispatch("FedLogOut").then(() => router.push({ path: "/login" }));
-
+     
       return;
     }
     if (status != 200) {
@@ -148,6 +153,10 @@ axios.interceptors.response.use(
       if (statusWhiteList.includes(status))
         return Promise.reject(error.response);
       if (status == 401) {
+        if (!store.state.token) {
+          store.dispatch("FedLogOut").then(() => 
+           router.push({ path: "/login" }));
+         }
         if (!isRefreshRequest(config.params)) {
           const cpFlag = await refreshToken();
           if (cpFlag) {
@@ -156,8 +165,11 @@ axios.interceptors.response.use(
             const resp = await axios.request(config);
             return resp;
           }
+          return;
         }
-        store.dispatch("FedLogOut").then(() => router.push({ path: "/login" }));
+        // console.log(store.state.token,'store.state.token');
+      
+        // store.dispatch("FedLogOut").then(() => router.push({ path: "/login" }));
         return;
       }
 

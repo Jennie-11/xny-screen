@@ -76,16 +76,17 @@ $unit: (
 }
 
 .max-ht {
-  @for $i from 1 through 500 {
-    &-#{$i}vh {
-      max-height: #{$i}vh;
-    }
-  }
   @for $i from 1 through $max-height {
     &-#{$i}#{$Tr-unit} {
       max-height: #{$i}#{$Tr-unit};
     }
   }
+  @for $i from 1 through 200 {
+    &-#{$i}vh {
+      max-height: #{$i}vh;
+    }
+  }
+
 }
 
 .min-ht {

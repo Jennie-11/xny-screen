@@ -14,3 +14,6 @@ export const vhFun = (value, key) => {
 export const activeClass = (status, status1 = 1, status2 = 2) => {
   return status == status1 ? "ff7Active" : status == status2 ? "ff0Active" : "";
 };
+export const activeHalfClass = (status, status1 = 30) => {
+  return status == status1 ? " gs100" : "";
+};

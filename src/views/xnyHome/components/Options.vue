@@ -1,15 +1,11 @@
 <template>
   <div class="options-box fx-fl fx-un-ct ht-52">
-    <el-select
-      v-model="activeId"
-      @change="changeOptionHandle"
-      placeholder="请选择"
-    >
+    <el-select v-model="activeId" placeholder="请选择">
       <el-option
-        v-for="item in option"
+        v-for="item in optionList"
         :key="item.value"
         :label="item.label"
-        :value="item.value"
+        :value="item.id"
       >
       </el-option>
     </el-select>
@@ -18,27 +14,16 @@
 <script>
 export default {
   name: "OptionsBox",
-  inheritAttrs: false,
-  props: {
-    option: {
-      type: Array,
-      default: undefined,
-    },
-    defultActiveId: {
-      type: Number,
-      default: 1,
-    },
-  },
   data: () => ({
     optionList: [
       {
-        value: 1,
+        id: 1,
         label: "复合材料1号线",
       },
-      {
-        value: 2,
-        label: "复合材料2号线",
-      },
+      // {
+      //   id: 2,
+      //   label: "复合材料2号线",
+      // },
       // {
       //   id: 3,
       //   label: "复合材料3号线",
@@ -50,12 +35,10 @@ export default {
     ],
     activeId: 1,
   }),
-  created() {
-    this.activeId = this.defultActiveId;
-  },
   methods: {
-    changeOptionHandle() {
-      this.$emit("changeOption", this.activeId);
+    changeOptionHandle(item) {
+      if (this.activeId == item.id) return;
+      this.activeId = item.id;
     },
   },
 };

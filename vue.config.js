@@ -34,7 +34,7 @@ module.exports = defineConfig({
     proxy: {
       "/api": {
         // target: "http://10.0.48.7",
-        target: "http://192.168.100.94:18888/api", //映射
+        target: "http://192.168.100.94:18888/api", //sit
         ws: true,
         pathRewrite: {
           "^/api": "/",
